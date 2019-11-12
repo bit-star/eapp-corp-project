@@ -63,13 +63,25 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.4</version>
 		</dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.1-jre</version>
+        </dependency>
+
 		<dependency>
-			<groupId>com.taobao.top</groupId>
-			<artifactId>top-api-sdk-dev</artifactId>
-			<version>dingtalk-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${pom.basedir}/lib/taobao-sdk-java-auto_1479188381469-20190227.jar</systemPath>
+			<groupId>com.taobao</groupId>
+			<artifactId>taobao-sdk-java-auto</artifactId>
+			<version>1479188381469-20191104</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.taobao.top</groupId>-->
+<!--			<artifactId>top-api-sdk-dev</artifactId>-->
+<!--			<version>dingtalk-SNAPSHOT</version>-->
+<!--			<scope>system</scope>-->
+<!--			<systemPath>${pom.basedir}/lib/taobao-sdk-java-auto_1479188381469-20190227.jar</systemPath>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>com.taobao.top</groupId>
 			<artifactId>lippi-oapi-encrpt</artifactId>

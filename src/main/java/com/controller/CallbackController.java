@@ -8,12 +8,16 @@ import com.config.URLConstant;
 import com.dingtalk.api.DefaultDingTalkClient;
 import com.dingtalk.api.DingTalkClient;
 import com.dingtalk.api.request.OapiCallBackDeleteCallBackRequest;
+import com.dingtalk.api.request.OapiCallBackGetCallBackFailedResultRequest;
 import com.dingtalk.api.request.OapiCallBackGetCallBackRequest;
 import com.dingtalk.api.request.OapiCallBackRegisterCallBackRequest;
 import com.dingtalk.api.response.OapiCallBackDeleteCallBackResponse;
+import com.dingtalk.api.response.OapiCallBackGetCallBackFailedResultResponse;
+import com.dingtalk.api.response.OapiCallBackGetCallBackResponse;
 import com.dingtalk.api.response.OapiCallBackRegisterCallBackResponse;
 import com.dingtalk.oapi.lib.aes.DingTalkEncryptor;
 import com.dingtalk.oapi.lib.aes.Utils;
+import com.taobao.api.ApiException;
 import com.util.AccessTokenUtil;
 import com.util.MessageUtil;
 import org.slf4j.Logger;
@@ -100,7 +104,7 @@ public class CallbackController {
 
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main1(String[] args) throws Exception{
         // 先删除企业已有的回调
         DingTalkClient client = new DefaultDingTalkClient(URLConstant.DELETE_CALLBACK);
         OapiCallBackDeleteCallBackRequest request = new OapiCallBackDeleteCallBackRequest();
@@ -118,5 +122,23 @@ public class CallbackController {
         if (registerResponse.isSuccess()) {
             System.out.println("回调注册成功了！！！");
         }
+    }
+
+
+    public static void main2(String[] args) throws ApiException {
+        DingTalkClient  client = new DefaultDingTalkClient("https://oapi.dingtalk.com/call_back/get_call_back");
+        OapiCallBackGetCallBackRequest request = new OapiCallBackGetCallBackRequest();
+        request.setHttpMethod("GET");
+        OapiCallBackGetCallBackResponse response = client.execute(request,AccessTokenUtil.getToken());
+        System.out.println(JSON.toJSONString(response));
+    }
+
+    public static void main(String[] args) throws ApiException {
+        DingTalkClient  client = new DefaultDingTalkClient("https://oapi.dingtalk.com/call_back/get_call_back_failed_result");
+        OapiCallBackGetCallBackFailedResultRequest request = new OapiCallBackGetCallBackFailedResultRequest();
+        request.setHttpMethod("GET");
+        OapiCallBackGetCallBackFailedResultResponse response = client.execute(request,AccessTokenUtil.getToken());
+        System.out.println(JSON.toJSONString(response));
+
     }
 }
